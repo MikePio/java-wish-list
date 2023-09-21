@@ -15,6 +15,27 @@ package org.java.esercizi.tre;
 
 public class Main {
 	public static void main(String[] args) {
-		System.out.println("Hello World");
+
+		int counter = 0;
+		boolean elementiPresenti = true;
+
+		// int[] interi = {0, 1, 2, 3, 4, 5};
+		// OPPURE
+		int[] interi = new int[6];
+
+		interi[0] = 0;
+		interi[1] = 1;
+		interi[2] = 2;
+		interi[3] = 3;
+		interi[4] = 4;
+		interi[5] = 5;
+
+		NumeriInteri numeriInteriArray = new NumeriInteri(interi, counter, elementiPresenti);
+
+		// System.out.println(interi.length);
+		for( counter = 0; numeriInteriArray.hasAncoraElementi();){
+			System.out.println(interi[numeriInteriArray.getElementoSuccessivo()]);
+		}
+
 	}
 }
