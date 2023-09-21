@@ -28,6 +28,7 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		
 		List<String> regali = new ArrayList<>();
+		List<String> persone = new ArrayList<>();
 		boolean booleanValue = true;
 		int counter = 0;
 		
@@ -38,17 +39,19 @@ public class Main {
 			}else{
 				System.out.print("Inserisci il nome del regalo da aggiungere alla lista: ");
 			}
-
+			
 			String regalo = sc.nextLine();
-
+			
 			if(regalo.equals("0")){
 				booleanValue = false;
 			}else{
 				
 				counter++;
 				System.out.println("Regalo aggiunto! \nIl numero di regali in lista sono " + counter);
-				
 				regali.add(regalo);
+				System.out.print(regalo + ", a chi lo/la vuoi dare ? ");
+				String persona = sc.nextLine();
+				persone.add(persona);
 			}
 			
 		} while(booleanValue == true);{
@@ -56,7 +59,7 @@ public class Main {
 			//* soluzione 1 stampa l'ArrayList
 			// System.out.println("Ecco la lista: " + regali); //? output: Ecco la lista: [cds, cds, cdsfsdcd, csdcdscds]
 			
-			//* soluzione 2 stampa l'ArrayList
+			//* + SEMPLICE soluzione 2 stampa l'ArrayList
 			//! utilizza for-each
 			// System.out.println("Ecco la lista: \n");
 
@@ -74,12 +77,14 @@ public class Main {
 			// 2) sdsdvds
 			// 3) vdsvds
 			
-			//* soluzione 3 stampa l'ArrayList
+			//* MIGLIORE soluzione 3 stampa l'ArrayList
 			//! utilizza map e IntStream.range per generare numeri da 1 a n (dove n è la dimensione dell'ArrayList)
 			System.out.println("Ecco la lista: \n");
 			
 			IntStream.range(0, regali.size())
-				.mapToObj(i -> (i+1) + ") " + regali.get(i))
+			// .mapToObj(i -> (i+1) + ") " + regali.get(i))
+			//* BONUS
+				.mapToObj(i -> (i+1) + ") " + regali.get(i) + " da regalare a " + persone.get(i))
 				.forEach(System.out::println);
 
 			System.out.println("\n");
